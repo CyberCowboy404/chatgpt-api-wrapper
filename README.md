@@ -1,3 +1,6 @@
+# Run docker
+docker run --rm -it -p 4200:4200 -v "$(pwd)":/project my-angular-app:dev
+
 # ChatAiImprovements
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
