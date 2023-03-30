@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.4
 
-FROM --platform=$BUILDPLATFORM node:lts-bullseye-slim as builder
+FROM node:lts-bullseye-slim
 
 RUN mkdir /project
 WORKDIR /project
