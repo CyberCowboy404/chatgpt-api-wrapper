@@ -1,5 +1,17 @@
 # Run docker
+
+#### dev
+docker build -t my-angular-app:dev -f Dockerfile.dev .
 docker run --rm -it -p 4200:4200 -v "$(pwd)":/project my-angular-app:dev
+
+#### prod
+# build a docker image
+docker build -t my-angular-app:prod -f Dockerfile.prod .
+
+docker run -d -p 80:80 my-angular-app:prod
+docker run -it -p 80:80  my-angular-app:prod
+docker exec -it my-angular-app:prod /bin/sh
+
 
 # ChatAiImprovements
 
