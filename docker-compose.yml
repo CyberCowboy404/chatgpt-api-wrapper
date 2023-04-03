@@ -11,6 +11,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - NODE_PATH=./src
     depends_on:
       - mysql
 

@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import indexRouter from '../routes/index';
+import v1Routes from '@routes/v1';
 import helmet from 'helmet';
 import compression from "compression";
 import { Server } from 'http';
@@ -10,7 +10,7 @@ import { Server } from 'http';
 export default function attachMiddlewares(app: Application, server: Server) {
     const env = process.env.NODE_ENV || 'development';
 
-    if (env === 'development') {
+    if (env === 'production') {
         app.use(helmet());
         app.use(compression());
         app.use(logger('dev'));
@@ -21,5 +21,5 @@ export default function attachMiddlewares(app: Application, server: Server) {
     app.use(cookieParser());
     app.use(express.static(path.join(__dirname, 'public')));
 
-    app.use('/', indexRouter);
+    app.use('/v1', v1Routes);
 }
