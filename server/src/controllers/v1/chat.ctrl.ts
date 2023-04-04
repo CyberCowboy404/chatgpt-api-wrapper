@@ -1,7 +1,8 @@
+import { Request, Response } from 'express';
+
 class ChatController {
-    ask(a: any, b: any) {
-        console.log(a, b);
-        return { a, b };
+    ask(req: Request, res: Response) {
+        return res.send({ a: 1 });
     }
 }
 

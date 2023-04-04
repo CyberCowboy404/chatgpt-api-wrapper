@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChatService } from 'services/chat.service';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  constructor(private chatService: ChatService) {
+    
+  }
 
+  ngOnInit(): void {
+    this.chatService.ask();
+  }
 }
