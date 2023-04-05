@@ -12,6 +12,6 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
-    
+    this.chatService.ask();
   }
 }

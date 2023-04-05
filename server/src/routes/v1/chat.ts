@@ -1,8 +1,9 @@
 import { Router } from 'express';
 
-import chatController from '@controllers/v1/chat.ctrl';
+import ChatController from '@controllers/v1/chat.ctrl';
 
 const chatRouter = Router();
+const chatController = new ChatController();
 
 chatRouter
     .route('/ask')

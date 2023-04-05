@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StorageService } from './services/storage.service';
+import { environment } from '@environments/environment';
 
 @Injectable()
 export class ChatInterceptor implements HttpInterceptor {
@@ -14,11 +15,11 @@ export class ChatInterceptor implements HttpInterceptor {
   constructor(private storage: StorageService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (request.url.includes('/my/specific/path')) {
+    if (request.url.includes('/chat')) {
       // Clone the request and attach the specific data
       const authReq = request.clone({
         setHeaders: {
-          'ChatApi': `${this.storage.getData('chatKey')}`,
+          [environment.chatApiKey]: `${this.storage.getData(environment.chatApiKey)}`,
         },
       });
       return next.handle(authReq);

@@ -20,7 +20,7 @@ export class ChatApiComponent {
     const value = this.form.get('chatKey')?.value || '';
     if (value) {
       this.chatService.putToken(value).subscribe(({ token }) => {
-        this.storage.saveData(environment.storageChatKey, token);
+        this.storage.saveData(environment.chatApiKey, token);
       });
     }
   }
