@@ -6,8 +6,8 @@ const chatRouter = Router();
 const chatController = new ChatController();
 
 chatRouter
-    .route('/ask')
-    .post(chatController.ask);
+    .route('/chat')
+    .post(chatController.chat);
 
 chatRouter
     .route('/token')

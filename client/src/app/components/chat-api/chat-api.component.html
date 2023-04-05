@@ -1,6 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <label>
-        Add chat gpt api key:
+        <a target="_blank" href="https://platform.openai.com/account/api-keys">
+            Add chat gpt api key:
+        </a>
         <input type="text" formControlName="chatKey" />
     </label>
     <button type="submit">Submit</button>

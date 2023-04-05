@@ -14,14 +14,10 @@ export class ChatService {
   url = environment.apiUrl + '/chat';
 
   constructor(private http: HttpClient) {
-    console.log('environment.mode', environment.production);
-    console.log('environment.apiUrl', environment);
   }
 
-  ask() {
-    this.http.post(`${this.url}/ask`, {}).subscribe((data) => {
-      console.log('data', data);
-    });
+  ask(message: string) {
+    return this.http.post(`${this.url}/chat`, { message });
   }
 
   putToken(token: string): Observable<IChatToken> {

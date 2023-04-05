@@ -12,6 +12,12 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
-    this.chatService.ask();
+
+  }
+
+  chat() {
+    this.chatService.ask('What is the distance from the moon to the earth?').subscribe((res) => {
+      console.log(res);
+    });
   }
 }
