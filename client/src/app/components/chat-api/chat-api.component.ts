@@ -3,6 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ChatService } from 'services/chat.service';
 import { StorageService } from 'services/storage.service';
 
+import { environment } from '@environments/environment';
+
 @Component({
   selector: 'app-chat-api',
   templateUrl: './chat-api.component.html',
@@ -18,7 +20,7 @@ export class ChatApiComponent {
     const value = this.form.get('chatKey')?.value || '';
     if (value) {
       this.chatService.putToken(value).subscribe(({ token }) => {
-        this.storage.saveData('ChatApi', token);
+        this.storage.saveData(environment.storageChatKey, token);
       });
     }
   }
