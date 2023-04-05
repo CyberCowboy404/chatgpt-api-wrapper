@@ -21,6 +21,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - SECRET_CHAT=secret
       - MYSQL_HOST=mysql
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password

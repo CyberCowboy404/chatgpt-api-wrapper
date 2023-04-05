@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ChatService } from 'services/chat.service';
 import { StorageService } from 'services/storage.service';
 
 @Component({
@@ -8,13 +9,17 @@ import { StorageService } from 'services/storage.service';
   styleUrls: ['./chat-api.component.scss']
 })
 export class ChatApiComponent {
-  constructor(private storage: StorageService) { }
+  constructor(private storage: StorageService, private chatService: ChatService) { }
   form = new FormGroup({
     chatKey: new FormControl(''),
   });
 
   onSubmit() {
-    this.storage.saveData('ChatApi', this.form.get('chatKey')?.value || '');
-    console.log(this.form.value);
+    const value = this.form.get('chatKey')?.value || '';
+    if (value) {
+      this.chatService.putToken(value).subscribe(({ token }) => {
+        this.storage.saveData('ChatApi', token);
+      });
+    }
   }
 }

@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
-import * as CryptoJS from  'crypto-js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-  // todo: hide this on server
-  key = "123";
 
   public saveData(key: string, value: string) {
-    localStorage.setItem(key, this.encrypt(value));
+    localStorage.setItem(key, value);
   }
 
   public getData(key: string) {
     let data = localStorage.getItem(key)|| "";
-    return this.decrypt(data);
+    return data;
   }
   public removeData(key: string) {
     localStorage.removeItem(key);
@@ -24,11 +21,4 @@ export class StorageService {
     localStorage.clear();
   }
 
-  private encrypt(txt: string): string {
-    return CryptoJS.AES.encrypt(txt, this.key).toString();
-  }
-
-  private decrypt(txtToDecrypt: string) {
-    return CryptoJS.AES.decrypt(txtToDecrypt, this.key).toString(CryptoJS.enc.Utf8);
-  }
 }

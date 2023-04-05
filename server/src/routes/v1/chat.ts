@@ -6,6 +6,10 @@ const chatRouter = Router();
 
 chatRouter
     .route('/ask')
-    .get(chatController.ask)
+    .post(chatController.ask);
+
+chatRouter
+    .route('/token')
+    .put(chatController.putChatToken);
 
 export default chatRouter;
