@@ -11,7 +11,7 @@ class ChatController {
     private defaultModel = 'gpt-3.5-turbo';
 
     @autobind
-    public async chat(req: Request, res: Response) {
+    public async completion(req: Request, res: Response) {
         const openai = this.initOpenAI(req);
         const { message } = req.body;
 

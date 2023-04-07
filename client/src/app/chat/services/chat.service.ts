@@ -16,8 +16,12 @@ export class ChatService {
   constructor(private http: HttpClient) {
   }
 
-  ask(message: string) {
-    return this.http.post(`${this.url}/chat`, { message });
+  completion(message: string) {
+    return this.http.post(`${this.url}/completion`, { message });
+  }
+
+  checkToken(token: string): Observable<IChatToken> {
+    return this.http.post<IChatToken>(`${this.url}/token`, { token });
   }
 
   putToken(token: string): Observable<IChatToken> {
