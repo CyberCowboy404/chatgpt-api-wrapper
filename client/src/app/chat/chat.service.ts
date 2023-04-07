@@ -7,6 +7,10 @@ export type IChatToken = {
   token: string;
 };
 
+export type ITokenData = {
+  tokenExists: boolean;
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,8 +24,8 @@ export class ChatService {
     return this.http.post(`${this.url}/completion`, { message });
   }
 
-  checkToken(token: string): Observable<IChatToken> {
-    return this.http.post<IChatToken>(`${this.url}/token`, { token });
+  ping() {
+    return this.http.get<ITokenData>(`${this.url}/ping`);
   }
 
   putToken(token: string): Observable<IChatToken> {

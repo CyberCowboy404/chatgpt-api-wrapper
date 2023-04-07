@@ -3,16 +3,15 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 import autobind from 'autobind-decorator';
 import { Configuration, OpenAIApi } from "openai";
 
-type IJWTString = string | JwtPayload;
+type IJWTString = JwtPayload | null | string;
 
 class ChatController {
     private secret = process.env.SECRET_CHAT || '';
-    private openai!: OpenAIApi;
     private defaultModel = 'gpt-3.5-turbo';
 
     @autobind
     public async completion(req: Request, res: Response) {
-        const openai = this.initOpenAI(req);
+        const { openai } = await this.initOpenAI(req);
         const { message } = req.body;
 
         if (openai && message) {
@@ -31,8 +30,17 @@ class ChatController {
     }
 
     @autobind
+    public async ping(req: Request, res: Response) {
+        const { token } = await this.initOpenAI(req);
+
+        res.send({
+            tokenExists: !!token,
+        })
+    }
+
+    @autobind
     public async getModels(req: Request, res: Response) {
-        const openai = this.initOpenAI(req);
+        const { openai } = await this.initOpenAI(req);
         const response = await openai!.listModels();
 
         return res.send(response);
@@ -49,22 +57,30 @@ class ChatController {
         return res.status(500).send({ message: 'Internal Server Error' });
     }
 
-    private initOpenAI(req: Request): OpenAIApi | undefined {
-        const token: IJWTString = this.getToken(req.get('ChatApi') || '');
-
-        if (!token) return;
-
-        return this.createConfiguration(token as string);
-    }
-
-    private getToken(token: string): IJWTString {
-        let result: IJWTString = '';
-
+    private async getToken(token: string): Promise<IJWTString> {
         if (token && this.secret) {
-            result = jwt.verify(token, this.secret);
+            try {
+                return jwt.verify(token, this.secret);
+            } catch (e) {
+                return null;
+            }
         }
 
-        return result;
+        return null;
+    }
+
+    private getTokenHeader(req: Request) {
+        return req.get('ChatApi') || '';
+    }
+
+    private async initOpenAI(req: Request) {
+        const token: IJWTString = await this.getToken(this.getTokenHeader(req));
+
+        if (!token) return { token: undefined, openai: undefined };
+
+        const openai = this.createConfiguration(token as string)
+
+        return { token, openai }
     }
 
     private createConfiguration(apiKey: string): OpenAIApi | undefined {
@@ -72,9 +88,8 @@ class ChatController {
             const configuration = new Configuration({
                 apiKey
             });
-            this.openai = new OpenAIApi(configuration);
 
-            return this.openai;
+            return new OpenAIApi(configuration);
         } catch (e) {
             console.log(e);
         }

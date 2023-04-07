@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChatInterceptor } from '@core/chat.interceptor';
 
 
 @NgModule({
@@ -16,7 +17,11 @@ import { AppComponent } from './app.component';
     HttpClientModule
   ],
   providers: [
-
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ChatInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -6,7 +6,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { ChatRoutingModule } from './chat-routing.module';
 import { ChatApiComponent } from 'chat/chat-api/chat-api.component';
-import { ChatInterceptor } from './services/chat.interceptor';
+import { ChatInterceptor } from '../core/chat.interceptor';
 import { ChatSidebarLeftComponent } from './chat-sidebar-left/chat-sidebar-left.component';
 import { ChatSidebarRightComponent } from './chat-sidebar-right/chat-sidebar-right.component';
 import { ChatContentComponent } from './chat-content/chat-content.component';
@@ -27,12 +27,5 @@ import { ChatContentComponent } from './chat-content/chat-content.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ChatInterceptor,
-      multi: true
-    }
-  ]
 })
 export class ChatModule { }

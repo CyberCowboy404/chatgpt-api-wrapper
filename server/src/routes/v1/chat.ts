@@ -10,6 +10,10 @@ chatRouter
     .post(chatController.completion);
 
 chatRouter
+    .route('/ping')
+    .get(chatController.ping);
+
+chatRouter
     .route('/token')
     .put(chatController.putChatToken);
 

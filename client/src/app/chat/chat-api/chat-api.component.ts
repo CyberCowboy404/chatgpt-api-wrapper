@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ChatService } from '../services/chat.service';
+import { ChatService } from '../chat.service';
 import { StorageService } from '@core/storage.service';
 
 import { environment } from '@environments/environment';
@@ -11,10 +11,19 @@ import { environment } from '@environments/environment';
   styleUrls: ['./chat-api.component.scss']
 })
 export class ChatApiComponent {
-  constructor(private storage: StorageService, private chatService: ChatService) { }
   form = new FormGroup({
     chatKey: new FormControl(''),
   });
+
+  tokenExists = false;
+
+  constructor(private storage: StorageService, private chatService: ChatService) { }
+
+  ngOnInit(): void {
+    this.chatService.ping().subscribe(({ tokenExists }) => {
+      this.tokenExists = tokenExists;
+    });
+  }
 
   onSubmit() {
     const value = this.form.get('chatKey')?.value || '';
