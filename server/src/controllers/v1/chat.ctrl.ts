@@ -12,11 +12,10 @@ class ChatController {
 
     @autobind
     public async chat(req: Request, res: Response) {
-        const token: IJWTString = this.getToken(this.getHeader(req));
+        const openai = this.initOpenAI(req);
         const { message } = req.body;
-        const openai = this.createConfiguration(token as string);
 
-        if (token && openai && message) {
+        if (openai && message) {
             const response = await openai.createChatCompletion({
                 model: this.defaultModel,
                 messages: [{
@@ -31,9 +30,9 @@ class ChatController {
         return res.status(401).send({ message: 'Unauthorized' });
     }
 
+    @autobind
     public async getModels(req: Request, res: Response) {
-        const token: IJWTString = this.getToken(this.getHeader(req));
-        const openai = this.createConfiguration(token as string);
+        const openai = this.initOpenAI(req);
         const response = await openai!.listModels();
 
         return res.send(response);
@@ -48,6 +47,14 @@ class ChatController {
         }
 
         return res.status(500).send({ message: 'Internal Server Error' });
+    }
+
+    private initOpenAI(req: Request): OpenAIApi | undefined {
+        const token: IJWTString = this.getToken(req.get('ChatApi') || '');
+
+        if (!token) return;
+
+        return this.createConfiguration(token as string);
     }
 
     private getToken(token: string): IJWTString {
@@ -71,10 +78,6 @@ class ChatController {
         } catch (e) {
             console.log(e);
         }
-    }
-
-    private getHeader(req: Request) {
-        return req.get('ChatApi') || '';
     }
 }
 
