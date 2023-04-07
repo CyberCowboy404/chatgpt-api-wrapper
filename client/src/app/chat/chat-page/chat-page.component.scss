@@ -1,0 +1,19 @@
+.chatPage {
+    display: grid;
+    grid-template-columns: 1fr, 2fr, 1fr;
+    grid-template-areas: "left main right";
+    grid-gap: 20px;
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "main"
+    }
+
+    aside {
+        display: none;
+    }
+}
