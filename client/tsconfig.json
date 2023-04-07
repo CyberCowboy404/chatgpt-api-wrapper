@@ -1,11 +1,11 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "src/app",
     "paths": {
       "@environments/*": ["../environments/*"],
-      "@app/*": ["*"],
+      "@components/*": ["components/*"],
+      "@core/*": ["core/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

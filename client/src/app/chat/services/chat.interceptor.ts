@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StorageService } from './services/storage.service';
+import { StorageService } from '@core/storage.service';
 import { environment } from '@environments/environment';
 
 @Injectable()

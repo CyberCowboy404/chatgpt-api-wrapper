@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ChatService } from 'services/chat.service';
-import { StorageService } from 'services/storage.service';
+import { ChatService } from '../services/chat.service';
+import { StorageService } from '@core/storage.service';
 
 import { environment } from '@environments/environment';
 
