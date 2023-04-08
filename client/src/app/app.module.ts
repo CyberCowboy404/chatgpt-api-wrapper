@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatInterceptor } from '@core/chat.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 
 @NgModule({
@@ -14,7 +17,11 @@ import { ChatInterceptor } from '@core/chat.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NbThemeModule.forRoot({ name: 'cosmic' }),
+    NbLayoutModule,
+    NbEvaIconsModule
   ],
   providers: [
     {
