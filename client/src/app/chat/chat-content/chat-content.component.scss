@@ -1,0 +1,11 @@
+$top-space: 20px;
+$botton-space: 20px;
+
+:host {
+    margin-top: $top-space;
+    display: block;
+}
+
+.chat {
+    height: calc(100vh - var(--header-height) - $top-space - $botton-space);
+}
