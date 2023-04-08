@@ -29,7 +29,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbEvaIconsModule,
     NbIconModule,
     NbDialogModule.forRoot(),
-    NbCardModule
+    NbCardModule,
+
   ],
   providers: [
     {
