@@ -6,29 +6,37 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatInterceptor } from '@core/chat.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { HeaderComponent } from './components/header/header.component';
+import { SettingsComponent } from './components/header/settings/settings.component';
+
+import { NbThemeModule, NbLayoutModule, NbIconModule, NbDialogModule, NbCardModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'cosmic' }),
+    NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    NbIconModule,
+    NbDialogModule.forRoot(),
+    NbCardModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ChatInterceptor,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

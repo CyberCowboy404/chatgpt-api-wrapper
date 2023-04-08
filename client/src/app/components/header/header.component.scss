@@ -1,0 +1,28 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        width: 30%;
+        a {
+            margin-right: 20px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+    &__settings {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        span {
+            margin-left: 10px;
+        }
+    }
+}
