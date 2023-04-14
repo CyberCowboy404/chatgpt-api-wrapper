@@ -1,7 +1,7 @@
 {
   "name": "server",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "A simple and ready-to-use chatbot solution utilizing OpenAI' api",
   "scripts": {
     "build": "npx tsc",
     "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/app.ts --watch"
@@ -30,5 +30,15 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.2"
-  }
+  },
+  "keywords": [
+    "chatbot",
+    "gpt",
+    "openai",
+    "node.js",
+    "express.js",
+    "typescript"
+  ],
+  "author": "CyberCowboy404",
+  "license": "MIT"
 }
