@@ -7,6 +7,9 @@ Moreover, the project is built on top of Docker and Docker Compose, allowing for
 
 Whether you are looking to develop chatbots for customer service, e-commerce, or any other application, ChatGPT Wrapper offers a reliable and customizable solution. Feel free to use it as you wish and take advantage of the powerful capabilities of GPT-3.5.
 
+# Example UI
+![ChatGPT Wrapper UI](./example.png)
+
 # Key Features
 - Easy integration with GPT-3.5
 - Intuitive client-side UI using Angular and Nebula UI library
