@@ -1,5 +1,5 @@
 # ChatGPT Wrapper: A Simple and Ready-to-Use Chatbot Solution
-ChatGPT Wrapper is a versatile chatbot solution that offers an easy and hassle-free way of integrating OpenAI's GPT-3.5 language model into your projects. This wrapper consists of a client application written in Angular, utilizing the Nebula UI library, and a backend written in Node.js with Express.js.
+ChatGPT Wrapper is a versatile chatbot solution that offers an easy and hassle-free way of integrating OpenAI's GPT language model into your projects. This wrapper consists of a client application written in Angular, utilizing the Nebula UI library, and a backend written in Node.js with Express.js.
 
 With ChatGPT Wrapper, you can create a powerful chatbot that can understand and generate natural language responses with the help of GPT-3.5. The client-side UI is intuitive and easy to use, making it an ideal solution for both novice and experienced developers.
 
@@ -11,14 +11,14 @@ Whether you are looking to develop chatbots for customer service, e-commerce, or
 ![ChatGPT Wrapper UI](./example.png)
 
 # Key Features
-- Easy integration with GPT-3.5
+- Easy integration with GPT 3/4 and openai API
 - Intuitive client-side UI using Angular and Nebula UI library
 - Powerful backend using Node.js and Express.js
 - Containerized deployment with Docker and Docker Compose
 - Customizable and versatile for different use cases
 
 # Getting Started
-To get started with ChatGPT Wrapper, simply clone the repository and follow the setup instructions provided in the README file. Once set up, you can start building your chatbot with the help of GPT-3.5 and the intuitive client-side UI.
+To get started with ChatGPT Wrapper, simply clone the repository and follow the setup instructions provided in the README file. Once set up, you can start building your chatbot with the help of GPT-3.5 and GPT-4 and the intuitive client-side UI.
 
 to start project simply run:
 ```bash
