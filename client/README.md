@@ -1,18 +1,3 @@
-# Run docker
-
-#### dev
-docker build -t chat-client:dev -f Dockerfile.dev .
-docker run --rm -it -p 4200:4200 -v "$(pwd)":/project chat-client:dev
-
-#### prod
-# build a docker image
-docker build -t chat-client:prod -f Dockerfile.prod .
-
-docker run -d -p 80:80 chat-client:prod
-docker run -it -p 80:80  chat-client:prod
-docker exec -it chat-client:prod /bin/sh
-
-
 # ChatAiImprovements
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
@@ -28,6 +13,20 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+# Running docker
+
+#### dev
+docker build -t chat-client:dev -f Dockerfile.dev .
+docker run --rm -it -p 4200:4200 -v "$(pwd)":/project chat-client:dev
+
+#### prod
+# build a docker image
+docker build -t chat-client:prod -f Dockerfile.prod .
+
+docker run -d -p 80:80 chat-client:prod
+docker run -it -p 80:80  chat-client:prod
+docker exec -it chat-client:prod /bin/sh
 
 ## Running unit tests
 
